@@ -50,7 +50,6 @@ def insert_employers(db_name):
                 vacancies = hh_parser.get_vacancies_by_employer_id(employer['id'])
 
                 for vacancy in vacancies:
-                    print(vacancy)
                     cur.execute("INSERT INTO vacancies (vacancy_id, employer_id, title, salary_from, salary_to, url) VALUES (%s, %s, %s, %s, %s, %s)",
                                 (vacancy['id'], employer['id'], vacancy['name'], vacancy['salary_from'] if vacancy else None,
                                  vacancy['salary_to'] if vacancy else None, vacancy['url']))

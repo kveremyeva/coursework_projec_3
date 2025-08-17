@@ -1,6 +1,6 @@
 import psycopg2
 from src.db_manager import DBManager
-from src.data_base import create_tables, insert_employers
+from src.data_base import create_tables, insert_employers, create_database
 from config import config
 
 
@@ -11,11 +11,7 @@ def main():
 
     try:
         # Создание базы данных (если ещё не создана)
-        conn = psycopg2.connect(**params)
-        conn.autocommit = True
-        with conn.cursor() as cur:
-            cur.execute(f"CREATE DATABASE {db_name}")
-        conn.close()
+        create_database(db_name)
 
         # Создание таблиц
         create_tables(db_name)
