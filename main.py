@@ -5,7 +5,7 @@ from config import config
 
 
 def main():
-    # Параметры подключения и имя базы данных
+    """Основная функция для работы всей программы"""
     db_name = "hh_vacancies"
     params = config()
 

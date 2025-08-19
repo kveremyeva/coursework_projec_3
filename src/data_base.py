@@ -40,6 +40,7 @@ def create_tables(db_name):
 
 
 def insert_employers(db_name):
+    """ Заполнение таблицы работодателей и вакансий"""
     hh_parser = HHParser()
     employers = hh_parser.get_employers()
     params = config()

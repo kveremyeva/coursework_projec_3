@@ -29,5 +29,3 @@ class HHParser:
             vacancies.append({"id": vacancy["id"], "name": vacancy["name"], "salary_from": salary_from, "salary_to": salary_to,
                 "url": vacancy["alternate_url"]})
         return vacancies
-
-

@@ -2,6 +2,7 @@ from configparser import ConfigParser
 
 
 def config(filename="database.ini", section="postgresql"):
+    """ Читает параметры подключения к PostgreSQL"""
     # create a parser
     parser = ConfigParser()
     # read config file
@@ -15,4 +16,3 @@ def config(filename="database.ini", section="postgresql"):
         raise (Exception
                (f'Section {section} is not found in the {filename} file.'))
     return db
-
