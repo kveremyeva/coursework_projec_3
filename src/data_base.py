@@ -3,7 +3,7 @@ from config import config
 from src.api_hh import HHParser
 
 
-def create_database(db_name):
+def create_database(db_name: str) -> None:
     """Создание базы данных"""
     params = config()
     conn = psycopg2.connect(dbname="postgres", **params)
@@ -15,7 +15,7 @@ def create_database(db_name):
     conn.close()
 
 
-def create_tables(db_name):
+def create_tables(db_name: str) -> None:
     """Созднание таблицы работодателей и вакансий"""
     params = config()
     with psycopg2.connect(dbname=db_name, **params) as conn:
@@ -39,7 +39,7 @@ def create_tables(db_name):
     conn.close()
 
 
-def insert_employers(db_name):
+def insert_employers(db_name: str) -> None:
     """ Заполнение таблицы работодателей и вакансий"""
     hh_parser = HHParser()
     employers = hh_parser.get_employers()
