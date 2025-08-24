@@ -1,8 +1,10 @@
+from typing import List, Dict, Any
+
 import requests
 
 
 class HHParser:
-    def get_employers(self):
+    def get_employers(self) -> List[Dict[str, str]]:
         """ Получение всех работодателей """
         params = {"sort_by": "by_vacancies_open", "per_page": 10}
         response = requests.get("https://api.hh.ru/employers", params=params)
@@ -13,7 +15,7 @@ class HHParser:
             employers.append({"id": employer["id"], "name": employer["name"]})
         return employers
 
-    def get_vacancies_by_employer_id(self, employer_id):
+    def get_vacancies_by_employer_id(self, employer_id: str) -> List[Dict[str, Any]]:
         """ Получение списка вакансий для конкретного работодателя"""
         params = {"employer_id": employer_id, "per_page": 50}
         response = requests.get(" https://api.hh.ru/vacancies", params=params)
@@ -29,5 +31,3 @@ class HHParser:
             vacancies.append({"id": vacancy["id"], "name": vacancy["name"], "salary_from": salary_from, "salary_to": salary_to,
                 "url": vacancy["alternate_url"]})
         return vacancies
-
-

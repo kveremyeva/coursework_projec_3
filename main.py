@@ -1,11 +1,13 @@
+from typing import Optional
+
 import psycopg2
 from src.db_manager import DBManager
 from src.data_base import create_tables, insert_employers, create_database
 from config import config
 
 
-def main():
-    # Параметры подключения и имя базы данных
+def main() -> None:
+    """Основная функция для работы всей программы"""
     db_name = "hh_vacancies"
     params = config()
 
@@ -83,7 +85,7 @@ def main():
             conn.close()
 
 
-def format_salary(salary_from, salary_to):
+def format_salary(salary_from: Optional[int], salary_to: Optional[int]) -> str:
     """Форматирование зарплаты для вывода"""
     if salary_from and salary_to:
         return f"{salary_from} - {salary_to} руб."
